@@ -17,11 +17,9 @@ import {
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { BookingModal } from "@/components/booking-modal"
 
 export default function NourishedGardenHealthWebsite() {
   const [activeTab, setActiveTab] = useState("women")
-  const [bookingOpen, setBookingOpen] = useState(false)
 
   const tabs = {
     women: {
@@ -170,11 +168,14 @@ export default function NourishedGardenHealthWebsite() {
               FAQ
             </a>
           </nav>
-          <a href="https://calendly.com/thenourishedgardens/calm-call" target="_blank">
-  <Button>
-    Book Your Free Call
-  </Button>
-</a>
+          <Button 
+            asChild
+            className="rounded-full bg-[#8b9b72] px-5 text-white hover:bg-[#73845e]"
+          >
+            <a href="https://calendly.com/thenourishedgardens/calm-call" target="_blank" rel="noopener noreferrer">
+              Book a Free Call
+            </a>
+          </Button>
         </div>
       </header>
 
@@ -203,13 +204,14 @@ export default function NourishedGardenHealthWebsite() {
               </p>
               <div className="mt-8 flex flex-col gap-4 sm:flex-row">
                 <Button 
-                  onClick={() => setBookingOpen(true)}
+                  asChild
                   className="rounded-full bg-[#8b9b72] px-8 py-6 text-base text-white hover:bg-[#73845e]"
                 >
-                     <a href="https://calendly.com/thenourishedgardens/calm-call" target="_blank">
-  <Button>
-    Book Your Free Call
-  </Button>
+                  <a href="https://calendly.com/thenourishedgardens/calm-call" target="_blank" rel="noopener noreferrer">
+                    Book a Free Health Strategy Call
+                  </a>
+                </Button>
+                <Button
                   variant="outline"
                   className="rounded-full border-[#8b9b72] px-8 py-6 text-base text-[#5d6b45] hover:bg-[#eef0e7]"
                 >
@@ -549,15 +551,17 @@ export default function NourishedGardenHealthWebsite() {
               Book a free Health Strategy Call and we&apos;ll talk through your
               goals, your budget, and your first simple steps.
             </p>
-               <a href="https://calendly.com/thenourishedgardens/calm-call" target="_blank">
-  <Button>
-    Book Your Free Call
-  </Button>
+            <Button 
+              asChild
+              className="mt-8 rounded-full bg-white px-8 py-6 text-base text-[#5d6b45] hover:bg-[#f4eadc]"
+            >
+              <a href="https://calendly.com/thenourishedgardens/calm-call" target="_blank" rel="noopener noreferrer">
+                Book Your Free Call
+              </a>
+            </Button>
           </div>
         </section>
       </main>
-
-      <BookingModal open={bookingOpen} onOpenChange={setBookingOpen} />
 
       <footer className="border-t border-[#dfd0bd] px-6 py-8 text-center text-sm text-[#766c5d]">
         <p>
