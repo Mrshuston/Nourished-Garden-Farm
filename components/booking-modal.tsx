@@ -3,6 +3,8 @@
 import { useState, useMemo } from "react"
 import { Calendar } from "@/components/ui/calendar"
 import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
 import {
   Dialog,
   DialogContent,
@@ -10,14 +12,14 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog"
-import { Clock, CalendarDays } from "lucide-react"
+import { Clock, CalendarDays, User, Mail, Phone } from "lucide-react"
 
 interface BookingModalProps {
   open: boolean
   onOpenChange: (open: boolean) => void
 }
 
-// Available time slots (Tuesday-Thursday, after 3:30pm EST)
+// Available time slots (Tuesday-Thursday, 3:30pm - 6:00pm EST)
 const timeSlots = [
   "3:30 PM",
   "4:00 PM",
@@ -30,8 +32,12 @@ const timeSlots = [
 export function BookingModal({ open, onOpenChange }: BookingModalProps) {
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined)
   const [selectedTime, setSelectedTime] = useState<string | undefined>(undefined)
+  const [name, setName] = useState("")
+  const [email, setEmail] = useState("")
+  const [phone, setPhone] = useState("")
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isBooked, setIsBooked] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
   // Only allow Tuesday (2), Wednesday (3), Thursday (4)
   const disabledDays = useMemo(() => {
@@ -41,14 +47,39 @@ export function BookingModal({ open, onOpenChange }: BookingModalProps) {
     ]
   }, [])
 
+  const isFormValid = selectedDate && selectedTime && name.trim() && email.trim() && phone.trim()
+
   const handleBooking = async () => {
-    if (!selectedDate || !selectedTime) return
+    if (!isFormValid) return
     
     setIsSubmitting(true)
-    // Simulate booking submission
-    await new Promise((resolve) => setTimeout(resolve, 1000))
-    setIsSubmitting(false)
-    setIsBooked(true)
+    setError(null)
+
+    try {
+      const response = await fetch("/api/book-call", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: name.trim(),
+          email: email.trim(),
+          phone: phone.trim(),
+          date: selectedDate?.toISOString(),
+          time: selectedTime,
+        }),
+      })
+
+      if (!response.ok) {
+        throw new Error("Failed to book call")
+      }
+
+      setIsBooked(true)
+    } catch {
+      setError("There was an error booking your call. Please try again.")
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleClose = () => {
@@ -57,7 +88,11 @@ export function BookingModal({ open, onOpenChange }: BookingModalProps) {
     setTimeout(() => {
       setSelectedDate(undefined)
       setSelectedTime(undefined)
+      setName("")
+      setEmail("")
+      setPhone("")
       setIsBooked(false)
+      setError(null)
     }, 300)
   }
 
@@ -94,7 +129,7 @@ export function BookingModal({ open, onOpenChange }: BookingModalProps) {
               at {selectedTime} EST
             </p>
             <p className="mt-4 text-sm text-[#766c5d]">
-              You&apos;ll receive a confirmation email with meeting details shortly.
+              A confirmation has been sent to {email}
             </p>
             <Button
               onClick={handleClose}
@@ -110,14 +145,14 @@ export function BookingModal({ open, onOpenChange }: BookingModalProps) {
 
   return (
     <Dialog open={open} onOpenChange={handleClose}>
-      <DialogContent className="max-w-lg rounded-[1.5rem] border-[#dfd0bd] bg-[#f8f3ea] p-0 sm:max-w-xl">
+      <DialogContent className="max-h-[90vh] max-w-lg overflow-y-auto rounded-[1.5rem] border-[#dfd0bd] bg-[#f8f3ea] p-0 sm:max-w-2xl">
         <DialogHeader className="border-b border-[#dfd0bd] p-6">
           <DialogTitle className="font-serif text-2xl font-bold text-[#3e352b]">
             Book Your Free Health Strategy Call
           </DialogTitle>
           <DialogDescription className="text-[#5d5144]">
             Select a day and time that works for you. Available Tuesday through
-            Thursday after 3:30 PM EST.
+            Thursday, 3:30 PM - 6:00 PM EST.
           </DialogDescription>
         </DialogHeader>
 
@@ -170,6 +205,57 @@ export function BookingModal({ open, onOpenChange }: BookingModalProps) {
           </div>
         </div>
 
+        {/* Contact Information Form */}
+        <div className="border-t border-[#dfd0bd] p-6">
+          <h4 className="mb-4 font-serif text-lg font-semibold text-[#3e352b]">
+            Your Contact Information
+          </h4>
+          <div className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="name" className="flex items-center gap-2 text-[#3e352b]">
+                <User size={14} className="text-[#8b9b72]" />
+                Name
+              </Label>
+              <Input
+                id="name"
+                type="text"
+                placeholder="Your full name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className="rounded-xl border-[#dfd0bd] bg-white focus:border-[#8b9b72] focus:ring-[#8b9b72]"
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="email" className="flex items-center gap-2 text-[#3e352b]">
+                <Mail size={14} className="text-[#8b9b72]" />
+                Email
+              </Label>
+              <Input
+                id="email"
+                type="email"
+                placeholder="your@email.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="rounded-xl border-[#dfd0bd] bg-white focus:border-[#8b9b72] focus:ring-[#8b9b72]"
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="phone" className="flex items-center gap-2 text-[#3e352b]">
+                <Phone size={14} className="text-[#8b9b72]" />
+                Phone Number
+              </Label>
+              <Input
+                id="phone"
+                type="tel"
+                placeholder="(555) 555-5555"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                className="rounded-xl border-[#dfd0bd] bg-white focus:border-[#8b9b72] focus:ring-[#8b9b72]"
+              />
+            </div>
+          </div>
+        </div>
+
         <div className="border-t border-[#dfd0bd] p-6">
           {selectedDate && selectedTime && (
             <p className="mb-4 text-center text-sm text-[#5d5144]">
@@ -180,9 +266,12 @@ export function BookingModal({ open, onOpenChange }: BookingModalProps) {
               </span>
             </p>
           )}
+          {error && (
+            <p className="mb-4 text-center text-sm text-red-600">{error}</p>
+          )}
           <Button
             onClick={handleBooking}
-            disabled={!selectedDate || !selectedTime || isSubmitting}
+            disabled={!isFormValid || isSubmitting}
             className="w-full rounded-full bg-[#8b9b72] py-6 text-base text-white hover:bg-[#73845e] disabled:cursor-not-allowed disabled:opacity-50"
           >
             {isSubmitting ? "Booking..." : "Confirm Booking"}
