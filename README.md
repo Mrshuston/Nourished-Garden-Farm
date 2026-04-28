@@ -206,9 +206,10 @@ export default function NourishedGardenHealthWebsite() {
                   onClick={() => setBookingOpen(true)}
                   className="rounded-full bg-[#8b9b72] px-8 py-6 text-base text-white hover:bg-[#73845e]"
                 >
-                  Book a Free Health Strategy Call
-                </Button>
-                <Button
+                     <a href="https://calendly.com/thenourishedgardens/calm-call" target="_blank">
+  <Button>
+    Book Your Free Call
+  </Button>
                   variant="outline"
                   className="rounded-full border-[#8b9b72] px-8 py-6 text-base text-[#5d6b45] hover:bg-[#eef0e7]"
                 >
@@ -548,12 +549,10 @@ export default function NourishedGardenHealthWebsite() {
               Book a free Health Strategy Call and we&apos;ll talk through your
               goals, your budget, and your first simple steps.
             </p>
-            <Button 
-              onClick={() => setBookingOpen(true)}
-              className="mt-8 rounded-full bg-white px-8 py-6 text-base text-[#5d6b45] hover:bg-[#f4eadc]"
-            >
-              Book Your Free Call
-            </Button>
+               <a href="https://calendly.com/thenourishedgardens/calm-call" target="_blank">
+  <Button>
+    Book Your Free Call
+  </Button>
           </div>
         </section>
       </main>
