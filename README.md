@@ -42,7 +42,7 @@ export default function NourishedGardenWebsite() {
       <header className="border-b px-6 py-4 flex justify-between items-center">
         <div className="flex items-center gap-2">
           <Leaf />
-          <h1 className="font-bold">The Nourished Garden & Farm</h1>
+          <h1 className="font-bold">The Nourished Garden and & Farm</h1>
         </div>
         <Button onClick={() => setIsBookingOpen(true)}>Book a Free Call</Button>
       </header>
@@ -101,7 +101,7 @@ export default function NourishedGardenWebsite() {
               <h3 className="text-xl font-bold">Starter Plan</h3>
               <p>$97</p>
               <ul>
-                <li>Basic meal plan</li>
+                <li>Basic Meal Recipes</li>
                 <li>Healthy habits guide</li>
               </ul>
             </CardContent>
@@ -173,7 +173,7 @@ export default function NourishedGardenWebsite() {
 
       {/* FOOTER */}
       <footer className="text-center py-6 text-sm">
-        © The Nourished Garden & Farm
+        © The Nourished Garden and & Farm
       </footer>
 
     </div>
