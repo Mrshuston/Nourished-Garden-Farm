@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { Leaf, X, CalendarDays } from "lucide-react";
@@ -175,6 +177,10 @@ export default function NourishedGardenWebsite() {
       <footer className="text-center py-6 text-sm">
         © The Nourished Garden and & Farm
       </footer>
+
+    </div>
+  );
+}
 
     </div>
   );
