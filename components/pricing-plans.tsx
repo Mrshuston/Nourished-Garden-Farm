@@ -1,4 +1,4 @@
-import { programs, programSignupUrl } from "@/lib/programs";
+import { programs, ATTRACTWELL_BASE_URL } from "@/lib/programs";
 
 export default function PricingPlans() {
   return (
@@ -61,7 +61,7 @@ export default function PricingPlans() {
                 ))}
               </ul>
               <a
-                href={programSignupUrl(program.slug)}
+                href={ATTRACTWELL_BASE_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-8 block w-full rounded-full bg-primary px-6 py-3 text-center font-semibold text-primary-foreground transition-colors hover:bg-primary/90"

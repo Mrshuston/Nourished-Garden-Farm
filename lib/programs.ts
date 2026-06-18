@@ -1,11 +1,6 @@
 // Base AttractWell URL that drives every signup button across the site.
 export const ATTRACTWELL_BASE_URL = "https://AttractWell.com/nourishedgardenfarm";
 
-// Build a signup link for a specific program by appending its slug.
-export function programSignupUrl(slug: string): string {
-  return `${ATTRACTWELL_BASE_URL}/programs/${slug}`;
-}
-
 export type Program = {
   name: string;
   slug: string;
