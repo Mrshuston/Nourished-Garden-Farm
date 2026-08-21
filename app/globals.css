@@ -77,3 +77,132 @@ footer { padding:36px clamp(24px,8vw,120px); text-align:center; border-top:1px s
 footer p { margin:4px auto; max-width:900px; }
 @media (max-width:1000px) { nav { display:none; }.hero { grid-template-columns:1fr; }.garden-scene { min-height:480px; border-radius:0; }.value-grid { grid-template-columns:repeat(2,1fr); }.program-grid { grid-template-columns:repeat(2,1fr); }.program-detail { grid-template-columns:1fr; }.purchase-card { position:static; }.member-grid { grid-template-columns:1fr; } }
 @media (max-width:680px) { .site-header { flex-wrap:wrap; }.header-actions .button-primary { display:none; }.hero { min-height:auto; }.hero-copy { padding-top:70px; }.garden-scene { min-height:400px; }.split-section { grid-template-columns:1fr; }.value-grid,.program-grid,.mini-grid { grid-template-columns:1fr; }.cta-section,.member-hero { align-items:flex-start; flex-direction:column; }.garden-sign { right:7%; top:28%; }.garden-beds { font-size:2rem; }.lesson-list article { grid-template-columns:1fr; } }
+/* Shared Nourished Garden visual theme */
+
+:root {
+  --garden-cream: rgba(250, 246, 237, 0.92);
+  --garden-cream-strong: rgba(250, 246, 237, 0.97);
+  --garden-sage: rgba(224, 232, 216, 0.92);
+  --garden-sage-soft: rgba(236, 241, 231, 0.9);
+  --garden-green: #294728;
+  --garden-border: rgba(61, 78, 48, 0.18);
+  --garden-shadow: 0 18px 50px rgba(38, 54, 34, 0.12);
+}
+
+html {
+  background: #e6eadf;
+}
+
+body {
+  min-height: 100vh;
+  color: var(--garden-green);
+  background:
+    linear-gradient(
+      rgba(246, 242, 231, 0.3),
+      rgba(225, 232, 215, 0.38)
+    ),
+    url("/garden-chickens-bg.jpg") center top / cover fixed no-repeat;
+}
+
+/* Keeps the farm visible while making content readable */
+main {
+  position: relative;
+}
+
+/* Reusable cream content surface */
+.garden-surface {
+  background: var(--garden-cream);
+  border: 1px solid var(--garden-border);
+  border-radius: 28px;
+  box-shadow: var(--garden-shadow);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+/* Stronger surface for large text sections */
+.garden-section {
+  background: var(--garden-cream-strong);
+  border-top: 1px solid var(--garden-border);
+  border-bottom: 1px solid var(--garden-border);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+/* Sage panels for member content */
+.member-garden-card {
+  background: var(--garden-sage-soft);
+  border: 1px solid var(--garden-border);
+  border-radius: 24px;
+  box-shadow: 0 12px 32px rgba(38, 54, 34, 0.1);
+  padding: 1.5rem;
+}
+
+.member-garden-card h2,
+.member-garden-card h3,
+.member-garden-title {
+  font-family: Georgia, "Times New Roman", serif;
+  color: var(--garden-green);
+}
+
+.member-garden-page {
+  min-height: calc(100vh - 80px);
+  padding: 3rem 1.25rem 5rem;
+}
+
+.member-garden-shell {
+  width: min(1180px, 100%);
+  margin: 0 auto;
+  padding: 2.5rem;
+  background: var(--garden-cream);
+  border: 1px solid var(--garden-border);
+  border-radius: 30px;
+  box-shadow: var(--garden-shadow);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+}
+
+.member-garden-title {
+  margin: 0 0 0.75rem;
+  font-size: clamp(2.3rem, 5vw, 4.25rem);
+  line-height: 1;
+}
+
+.member-garden-intro {
+  max-width: 720px;
+  margin-bottom: 2rem;
+  color: #465542;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.member-garden-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+/* Make the shared site header sit naturally over the farm scene */
+header {
+  background: rgba(250, 246, 237, 0.94);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+@media (max-width: 900px) {
+  body {
+    background-attachment: scroll;
+  }
+
+  .member-garden-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .member-garden-shell {
+    padding: 1.5rem;
+    border-radius: 22px;
+  }
+
+  .member-garden-page {
+    padding: 1.5rem 0.8rem 3rem;
+  }
+}
