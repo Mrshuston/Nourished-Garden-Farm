@@ -96,7 +96,8 @@ export const programs: Program[] = [
     description: "A six-week wellness reset combining stress-management habits, nourishing food, sleep, movement, gentle skin care, and a 15-minute red-light routine when that timing matches your device instructions.",
     outcome: "Build a calmer daily rhythm that supports stress management, recovery, and healthier-looking skin without restrictive routines or medical promises.",
     length: "6 weeks",
-    price: "Coming soon",
+    price: "$1 launch offer · $98 after October 20, 2026",
+    priceEnv: "STRIPE_PRICE_ROOTED_RADIANT_LAUNCH",
     lessons: [
       "Week 1: Calm the Chaos",
       "Week 2: Nourish From Within",
