@@ -89,6 +89,23 @@ export const programs: Program[] = [
     priceEnv: "STRIPE_PRICE_RED_LIGHT",
     lessons: ["How red light is discussed", "Device basics", "Routine tracker", "Safety questions"],
   },
+  {
+    slug: "rooted-radiant",
+    title: "Rooted & Radiant",
+    eyebrow: "Stress + skin wellness",
+    description: "A six-week wellness reset combining stress-management habits, nourishing food, sleep, movement, gentle skin care, and a 15-minute red-light routine when that timing matches your device instructions.",
+    outcome: "Build a calmer daily rhythm that supports stress management, recovery, and healthier-looking skin without restrictive routines or medical promises.",
+    length: "6 weeks",
+    price: "Coming soon",
+    lessons: [
+      "Week 1: Calm the Chaos",
+      "Week 2: Nourish From Within",
+      "Week 3: Create Your Skin-Supportive Routine",
+      "Week 4: Sleep & Recovery",
+      "Week 5: Move Stress Out of the Body",
+      "Week 6: Build Your Soil to Soul Lifestyle",
+    ],
+  },
 ];
 
 export function getProgram(slug: string) {
