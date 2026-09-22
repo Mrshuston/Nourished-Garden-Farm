@@ -206,3 +206,22 @@ header {
     padding: 1.5rem 0.8rem 3rem;
   }
 }
+
+.finder-page { min-height: calc(100vh - 160px); padding: clamp(28px, 6vw, 72px) 20px; }
+.finder-shell { width: min(780px, 100%); margin: auto; padding: clamp(26px, 5vw, 54px); }
+.finder-shell h1 { font-size: clamp(2.4rem, 5vw, 4rem); }
+.finder-intro { max-width: 620px; font-size: 1.08rem; }
+.finder-question, .finder-result { margin-top: 34px; }
+.finder-question h2, .finder-result h2 { font-size: clamp(1.7rem, 3.5vw, 2.5rem); margin: 20px 0; }
+.finder-count, .finder-kicker { font-size: .9rem; font-weight: 800; color: var(--green); }
+.finder-progress { height: 9px; border-radius: 99px; background: #dfe8d7; overflow: hidden; }
+.finder-progress span { display: block; height: 100%; background: var(--gold); transition: width .2s ease; }
+.finder-options { display: grid; gap: 11px; }
+.finder-option { width: 100%; padding: 16px 18px; text-align: left; color: var(--ink); border: 2px solid #d7decf; border-radius: 14px; background: #fffdf7; cursor: pointer; font-size: 1rem; line-height: 1.4; }
+.finder-option:hover, .finder-option:focus-visible { border-color: var(--green); background: #edf2e7; }
+.finder-option.selected { border-color: var(--green); background: #e6efdf; font-weight: 700; }
+.finder-controls { display: flex; justify-content: space-between; gap: 15px; margin-top: 26px; }
+.finder-controls .button:disabled { opacity: .5; cursor: not-allowed; transform: none; box-shadow: none; }
+.finder-tip { padding: 20px; border-radius: 16px; background: #e6efdf; line-height: 1.6; }
+.finder-text-button { margin-top: 24px; padding: 8px 0; border: 0; background: transparent; color: var(--green); font-weight: 800; text-decoration: underline; cursor: pointer; }
+.finder-result .fine-print { margin-top: 26px; }
