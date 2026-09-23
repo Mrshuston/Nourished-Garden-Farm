@@ -7,9 +7,9 @@ export default function HomePage() {
     <main>
       <section className="hero">
         <div className="hero-copy">
-          <p className="eyebrow">Whole-person wellness for real family life</p>
+          <p className="eyebrow">Online holistic health coaching</p>
           <h1>Small steps.<br/><em>Deeper roots.</em><br/>A healthier home.</h1>
-          <p className="hero-lede">Practical coaching for whole-food nutrition, calmer routines, gardening, healthy habits, and family wellness—with thoughtful support for ADHD, ADD, and autism.</p>
+          <p className="hero-lede">Helping individuals and families build healthier habits, calmer routines, and brighter tomorrows through practical, whole-person support.</p>
           <div className="button-row"><Link className="button button-primary" href="/program-finder">Find my program</Link><Link className="button button-secondary" href="/programs">Explore programs</Link><a className="button button-secondary" href="https://calendly.com/thenourishedgardens/calm-call" target="_blank" rel="noreferrer">Book a free call</a></div>
           <p className="trust-line">🌿 Simple · Personal · Family-centered</p>
         </div>
