@@ -225,3 +225,13 @@ header {
 .finder-tip { padding: 20px; border-radius: 16px; background: #e6efdf; line-height: 1.6; }
 .finder-text-button { margin-top: 24px; padding: 8px 0; border: 0; background: transparent; color: var(--green); font-weight: 800; text-decoration: underline; cursor: pointer; }
 .finder-result .fine-print { margin-top: 26px; }
+
+.check-in-card { margin: 32px clamp(24px,8vw,120px) 0; padding: clamp(24px,4vw,42px); background:var(--paper); border:1px solid var(--line); border-radius:26px; box-shadow:0 12px 32px rgba(36,62,36,.10); }
+.check-in-card h2 { font-size:clamp(2rem,4vw,3rem); }
+.check-in-card p { max-width:720px; }
+.check-in-actions { display:flex; flex-wrap:wrap; gap:12px; }
+.check-in-actions button:disabled { opacity:.7; cursor:default; }
+@media (display-mode:standalone) { .site-header { min-height:64px; padding-top:env(safe-area-inset-top); } body { padding-bottom:env(safe-area-inset-bottom); } }
+
+.install-help { margin:20px clamp(24px,8vw,120px) 0; padding:18px 24px; border-radius:18px; background:var(--paper); border:1px solid var(--line); }
+.install-help summary { cursor:pointer; font-weight:800; }

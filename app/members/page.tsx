@@ -2,6 +2,7 @@ import Link from "next/link";
 import { currentUser } from "@clerk/nextjs/server";
 import { CustomerPortalButton } from "@/components/customer-portal-button";
 import { programs } from "@/lib/programs";
+import { DailyCheckIn } from "@/components/daily-check-in";
 
 export default async function MembersPage() {
   const user = await currentUser();
@@ -21,6 +22,8 @@ export default async function MembersPage() {
         </div>
         <CustomerPortalButton />
       </section>
+      <DailyCheckIn />
+      <details className="install-help"><summary>Install The Nourished Garden &amp; Farm on your phone</summary><p><strong>iPhone:</strong> Open this page in Safari, tap Share, then Add to Home Screen.</p><p><strong>Android:</strong> Open this page in Chrome, tap the menu, then Install app or Add to Home screen.</p><p>Sign in with the same email and password you use on the website to see your programs.</p></details>
       <section className="content-section">
         <h2>Your programs</h2>
         {owned.length ? (
@@ -52,7 +55,7 @@ export default async function MembersPage() {
         <section className="discover-section">
           <h2>Explore more support</h2>
           <div className="mini-grid">
-            {discover.slice(0, 3).map((program) => (
+            {discover.map((program) => (
               <Link key={program.slug} href={`/programs/${program.slug}`}>
                 <span>{program.eyebrow}</span>
                 <strong>{program.title}</strong>
