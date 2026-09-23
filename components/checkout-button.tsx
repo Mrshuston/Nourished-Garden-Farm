@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-export function CheckoutButton({ slug, free = false }: { slug: string; free?: boolean }) {
+export function CheckoutButton({ slug, free = false, inquiryOnly = false }: { slug: string; free?: boolean; inquiryOnly?: boolean }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -34,6 +34,8 @@ export function CheckoutButton({ slug, free = false }: { slug: string; free?: bo
     }
     window.location.assign(data.url);
   }
+
+  if (inquiryOnly) return <a className="button button-primary button-wide" href="https://calendly.com/thenourishedgardens/calm-call" target="_blank" rel="noreferrer">Ask about this program</a>;
 
   return <div><button className="button button-primary button-wide" onClick={startCheckout} disabled={loading}>{loading ? free ? "Preparing your guide…" : "Opening secure checkout…" : free ? "Download the free guide" : "Buy secure access"}</button>{error && <p className="form-error" role="alert">{error}</p>}</div>;
 }
