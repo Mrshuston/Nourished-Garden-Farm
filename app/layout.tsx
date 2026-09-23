@@ -5,7 +5,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: { default: "The Nourished Garden & Farm", template: "%s | The Nourished Garden & Farm" },
-  description: "Practical holistic health coaching for individuals and families—nourishing the body from the soil to the soul.",
+  description: "Online holistic health coaching that helps individuals and families build healthier habits, calmer routines, and brighter tomorrows.",
   manifest: "/manifest.webmanifest",
   appleWebApp: { capable: true, title: "Nourished Garden", statusBarStyle: "default" },
   icons: { icon: "/icons/garden.svg", apple: "/icons/garden-192.png" },
