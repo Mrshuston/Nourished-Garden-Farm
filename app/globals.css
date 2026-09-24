@@ -235,3 +235,25 @@ header {
 
 .install-help { margin:20px clamp(24px,8vw,120px) 0; padding:18px 24px; border-radius:18px; background:var(--paper); border:1px solid var(--line); }
 .install-help summary { cursor:pointer; font-weight:800; }
+
+.daily-inspiration-card {
+  display:flex;
+  align-items:center;
+  gap:18px;
+  margin:32px clamp(24px,8vw,120px) 0;
+  padding:24px clamp(22px,4vw,36px);
+  color:var(--green-dark);
+  background:linear-gradient(120deg,#fffaf0,#e7efdd);
+  border:1px solid rgba(54,84,45,.22);
+  border-radius:24px;
+  box-shadow:0 12px 30px rgba(36,62,36,.09);
+}
+.daily-inspiration-card>span { font-size:2.4rem; }
+.daily-inspiration-card .eyebrow { margin-bottom:8px; }
+.daily-inspiration-card blockquote { margin:0; font:italic 700 clamp(1.2rem,2.5vw,1.65rem)/1.45 Georgia,"Times New Roman",serif; }
+.inspiration-backdrop { position:fixed; z-index:100; inset:0; display:grid; place-items:center; padding:22px; background:rgba(24,39,23,.64); backdrop-filter:blur(5px); -webkit-backdrop-filter:blur(5px); }
+.inspiration-dialog { width:min(580px,100%); padding:clamp(30px,6vw,54px); text-align:center; color:var(--green-dark); background:linear-gradient(145deg,#fffdf7,#e8f0df); border:1px solid rgba(255,255,255,.7); border-radius:30px; box-shadow:0 28px 90px rgba(20,36,20,.38); }
+.inspiration-dialog h2 { font-size:clamp(2rem,5vw,3.3rem); }
+.inspiration-dialog blockquote { margin:24px 0 30px; font:italic 700 clamp(1.35rem,3.5vw,2rem)/1.5 Georgia,"Times New Roman",serif; }
+.inspiration-sprout { display:block; margin-bottom:14px; font-size:3.4rem; }
+@media (max-width:680px) { .daily-inspiration-card { align-items:flex-start; }.inspiration-dialog { border-radius:24px; } }
