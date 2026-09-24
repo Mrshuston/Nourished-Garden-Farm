@@ -1,28 +1,9 @@
-﻿import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
-import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
+import { updateSession } from "@/lib/supabase/proxy";
 
-const isProtectedRoute = createRouteMatcher([
-  "/members(.*)",
-  "/api/checkout(.*)",
-  "/api/portal(.*)",
-]);
-
-export default clerkMiddleware(
-  async (auth, request) => {
-    if (!isProtectedRoute(request)) return;
-
-    const { userId } = await auth();
-
-    if (!userId) {
-      const signInUrl = new URL("/sign-in", request.url);
-      signInUrl.searchParams.set("redirect_url", request.url);
-      return NextResponse.redirect(signInUrl);
-    }
-  },
-  {
-    publishableKey: process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
-  }
-);
+export default async function proxy(request: NextRequest) {
+  return updateSession(request);
+}
 
 export const config = {
   matcher: [
