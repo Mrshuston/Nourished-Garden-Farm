@@ -1,6 +1,6 @@
-import { currentUser } from "@clerk/nextjs/server";
 import { notFound, redirect } from "next/navigation";
 import { getProgram } from "@/lib/programs";
+import { createClient } from "@/lib/supabase/server";
 
 const rootedRadiantDetails = [
   {
@@ -34,8 +34,9 @@ export default async function MemberProgramPage({ params }: { params: Promise<{ 
   const program = getProgram(slug);
   if (!program) notFound();
 
-  const user = await currentUser();
-  const access = Array.isArray(user?.publicMetadata.programs) ? user.publicMetadata.programs : [];
+  const { data: { user } } = await (await createClient()).auth.getUser();
+  if (!user) redirect(`/sign-in?next=/members/programs/${slug}`);
+  const access = Array.isArray(user.user_metadata.programs) ? user.user_metadata.programs : [];
   if (!access.includes(slug)) redirect(`/programs/${slug}`);
 
   const isRootedRadiant = slug === "rooted-radiant";
