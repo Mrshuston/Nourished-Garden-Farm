@@ -1,14 +1,16 @@
 import Link from "next/link";
-import { currentUser } from "@clerk/nextjs/server";
+import { redirect } from "next/navigation";
+import { createClient } from "@/lib/supabase/server";
 import { CustomerPortalButton } from "@/components/customer-portal-button";
 import { programs } from "@/lib/programs";
 import { DailyCheckIn } from "@/components/daily-check-in";
 import { DailyInspiration } from "@/components/daily-inspiration";
 
 export default async function MembersPage() {
-  const user = await currentUser();
-  const access = Array.isArray(user?.publicMetadata.programs)
-    ? user.publicMetadata.programs.filter((value): value is string => typeof value === "string")
+  const { data: { user } } = await (await createClient()).auth.getUser();
+  if (!user) redirect("/sign-in?next=/members");
+  const access = Array.isArray(user.user_metadata.programs)
+    ? user.user_metadata.programs.filter((value: unknown): value is string => typeof value === "string")
     : [];
   const owned = programs.filter((program) => access.includes(program.slug));
   const discover = programs.filter((program) => !access.includes(program.slug));
@@ -18,7 +20,7 @@ export default async function MembersPage() {
       <section className="member-hero">
         <div>
           <p className="eyebrow">Your member garden</p>
-          <h1>Welcome{user?.firstName ? `, ${user.firstName}` : ""}.</h1>
+          <h1>Welcome{user.user_metadata.full_name ? `, ${String(user.user_metadata.full_name).split(" ")[0]}` : ""}.</h1>
           <p>Your purchased programs and free resources live here. Return anytime and continue at your own pace.</p>
         </div>
         <CustomerPortalButton />
