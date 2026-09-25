@@ -1,2 +1,3 @@
-import { SignIn } from "@clerk/nextjs";
-export default function Page() { return <main className="auth-page"><SignIn /></main>; }
+import { Suspense } from "react";
+import { AuthForm } from "@/components/auth-form";
+export default function Page() { return <main className="auth-page"><Suspense><AuthForm mode="sign-in" /></Suspense></main>; }
