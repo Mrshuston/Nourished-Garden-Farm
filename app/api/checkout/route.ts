@@ -1,15 +1,15 @@
 import { randomBytes } from "crypto";
-import { auth, currentUser } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 import { appUrl, getStripe } from "@/lib/stripe";
 import { getProgram } from "@/lib/programs";
+import { createClient } from "@/lib/supabase/server";
 import type Stripe from "stripe";
 
 export const runtime = "nodejs";
 
 export async function POST(request: Request) {
-  const { userId } = await auth();
-  if (!userId) return NextResponse.json({ error: "Please sign in before purchasing." }, { status: 401 });
+  const { data: { user } } = await (await createClient()).auth.getUser();
+  if (!user) return NextResponse.json({ error: "Please sign in before purchasing." }, { status: 401 });
 
   const { slug } = (await request.json()) as { slug?: string };
   const program = slug ? getProgram(slug) : undefined;
@@ -17,15 +17,14 @@ export async function POST(request: Request) {
   const priceId = process.env[program.priceEnv];
   if (!priceId || priceId === "price_replace_me") return NextResponse.json({ error: "This program is being prepared for sale. Please book a free call for help." }, { status: 503 });
 
-  const user = await currentUser();
-  const email = user?.primaryEmailAddress?.emailAddress;
+  const email = user.email;
   const stripe = getStripe();
   const checkoutParams = {
     mode: "payment",
     line_items: [{ price: priceId, quantity: 1 }],
-    client_reference_id: userId,
+    client_reference_id: user.id,
     customer_email: email,
-    metadata: { clerkUserId: userId, programSlug: program.slug },
+    metadata: { supabaseUserId: user.id, programSlug: program.slug },
     integration_identifier: `nourished-garden-${randomBytes(4).toString("hex")}`,
     success_url: `${appUrl()}/members?purchase=success`,
     cancel_url: `${appUrl()}/programs/${program.slug}?checkout=cancelled`,

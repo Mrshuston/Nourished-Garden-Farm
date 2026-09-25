@@ -6,7 +6,7 @@ A mobile-friendly Next.js website, program storefront, and secure member portal 
 
 - Farmhouse-inspired public website
 - Clickable program catalog and program detail pages
-- Clerk sign-in and protected member routes
+- Supabase sign-in and protected member routes
 - Stripe-hosted Checkout Sessions
 - Verified Stripe webhook that grants program access
 - Stripe customer billing portal
@@ -22,9 +22,9 @@ A mobile-friendly Next.js website, program storefront, and secure member portal 
 
 ## Required services
 
-### Clerk
+### Supabase
 
-Create a Clerk application and set `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` and `CLERK_SECRET_KEY`. Add the production domain after Vercel is connected.
+Create a Supabase project and set `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, and `SUPABASE_SERVICE_ROLE_KEY`. Add the website URL and `/auth/callback` redirect in Supabase Authentication URL settings.
 
 ### Stripe
 

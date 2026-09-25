@@ -31,8 +31,13 @@
   "include": [
     "next-env.d.ts",
     ".next/types/**/*.ts",
-    "**/*.ts",
-    "**/*.tsx",
+    "app/**/*.ts",
+    "app/**/*.tsx",
+    "components/**/*.ts",
+    "components/**/*.tsx",
+    "lib/**/*.ts",
+    "types/**/*.d.ts",
+    "proxy.ts",
     ".next/dev/types/**/*.ts"
   ],
   "exclude": [
