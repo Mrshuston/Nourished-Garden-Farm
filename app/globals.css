@@ -67,6 +67,16 @@ nav a:hover { color:var(--clay); }
 .purchase-price { font:700 3.2rem Georgia,serif; }.purchase-card ul,.member-card ul { padding:0; list-style:none; margin:24px 0; }.purchase-card li { margin:12px 0; }
 .fine-print { font-size:.74rem; color:#73776e; line-height:1.55; }.form-error { color:#9e2f2f; font-size:.82rem; }
 .auth-page { min-height:75vh; display:grid; place-items:center; padding:50px; }
+.auth-card { width:min(500px,100%); padding:clamp(28px,5vw,48px); }
+.auth-card h1 { font-size:clamp(2.4rem,6vw,4rem); }
+.auth-card form { display:grid; gap:18px; margin-top:28px; }
+.auth-card label { display:grid; gap:8px; color:var(--green-dark); font-weight:800; }
+.auth-card input { width:100%; min-height:50px; padding:12px 14px; color:var(--ink); border:1px solid var(--line); border-radius:12px; background:white; font:inherit; }
+.auth-card input:focus { outline:3px solid rgba(199,154,75,.3); border-color:var(--green); }
+.auth-sprout { display:block; margin-bottom:16px; font-size:3rem; }
+.auth-links { display:flex; flex-wrap:wrap; justify-content:space-between; gap:14px; margin-top:22px; font-size:.92rem; }
+.auth-links a { color:var(--green); font-weight:800; text-decoration:underline; }
+.form-success { padding:12px 14px; color:#244a27; background:#e5f1df; border-radius:12px; }
 .member-hero { display:flex; align-items:end; justify-content:space-between; gap:30px; }
 .member-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:22px; margin-top:30px; }
 .member-card { padding:32px; border-radius:24px; background:white; border:1px solid var(--line); }.access-pill { display:inline-block; color:var(--green); background:#e6efd9; border-radius:999px; padding:7px 11px; font-size:.72rem; font-weight:900; text-transform:uppercase; margin-bottom:18px; }
@@ -76,7 +86,7 @@ nav a:hover { color:var(--clay); }
 footer { padding:36px clamp(24px,8vw,120px); text-align:center; border-top:1px solid var(--line); background:#f3ecdd; }
 footer p { margin:4px auto; max-width:900px; }
 @media (max-width:1000px) { nav { display:none; }.hero { grid-template-columns:1fr; }.garden-scene { min-height:480px; border-radius:0; }.value-grid { grid-template-columns:repeat(2,1fr); }.program-grid { grid-template-columns:repeat(2,1fr); }.program-detail { grid-template-columns:1fr; }.purchase-card { position:static; }.member-grid { grid-template-columns:1fr; } }
-@media (max-width:680px) { .site-header { flex-wrap:wrap; }.header-actions .button-primary { display:none; }.hero { min-height:auto; }.hero-copy { padding-top:70px; }.garden-scene { min-height:400px; }.split-section { grid-template-columns:1fr; }.value-grid,.program-grid,.mini-grid { grid-template-columns:1fr; }.cta-section,.member-hero { align-items:flex-start; flex-direction:column; }.garden-sign { right:7%; top:28%; }.garden-beds { font-size:2rem; }.lesson-list article { grid-template-columns:1fr; } }
+@media (max-width:680px) { .site-header { flex-wrap:wrap; }.header-actions .button-primary { display:none; }.hero { min-height:auto; }.hero-copy { padding-top:70px; }.garden-scene { min-height:400px; }.split-section { grid-template-columns:1fr; }.value-grid,.program-grid,.mini-grid { grid-template-columns:1fr; }.cta-section,.member-hero { align-items:flex-start; flex-direction:column; }.garden-sign { right:7%; top:28%; }.garden-beds { font-size:2rem; }.lesson-list article { grid-template-columns:1fr; }.auth-page { padding:28px 16px; }.auth-links { flex-direction:column; } }
 /* Shared Nourished Garden visual theme */
 
 :root {
