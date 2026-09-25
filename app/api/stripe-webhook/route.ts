@@ -1,8 +1,8 @@
-import { clerkClient } from "@clerk/nextjs/server";
 import { headers } from "next/headers";
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
 import { getStripe } from "@/lib/stripe";
+import { createAdminClient } from "@/lib/supabase/admin";
 
 export const runtime = "nodejs";
 
@@ -21,19 +21,22 @@ export async function POST(request: Request) {
   if (event.type === "checkout.session.completed") {
     const session = event.data.object;
     if (session.payment_status !== "paid") return NextResponse.json({ received: true });
-    const userId = session.metadata?.clerkUserId;
+    const userId = session.metadata?.supabaseUserId;
     const programSlug = session.metadata?.programSlug;
     if (userId && programSlug) {
-      const client = await clerkClient();
-      const user = await client.users.getUser(userId);
-      const currentPrograms = Array.isArray(user.publicMetadata.programs) ? user.publicMetadata.programs.filter((value): value is string => typeof value === "string") : [];
-      await client.users.updateUserMetadata(userId, {
-        publicMetadata: {
-          ...user.publicMetadata,
+      const admin = createAdminClient();
+      const { data } = await admin.auth.admin.getUserById(userId);
+      const user = data.user;
+      if (user) {
+        const currentPrograms = Array.isArray(user.user_metadata.programs) ? user.user_metadata.programs.filter((value: unknown): value is string => typeof value === "string") : [];
+        await admin.auth.admin.updateUserById(userId, {
+          user_metadata: {
+          ...user.user_metadata,
           programs: Array.from(new Set([...currentPrograms, programSlug])),
           stripeCustomerId: typeof session.customer === "string" ? session.customer : undefined,
         },
-      });
+        });
+      }
     }
   }
 
