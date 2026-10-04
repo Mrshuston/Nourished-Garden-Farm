@@ -1,4 +1,5 @@
 import Link from "next/link";
+import "./home.css";
 
 const selfPacedPrograms = [
   { title: "Rooted & Radiant · 6 weeks", price: "$1 now", slug: "rooted-radiant" },
