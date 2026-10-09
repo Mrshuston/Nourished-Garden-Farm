@@ -15,7 +15,8 @@ export default function AuthCallbackPage() {
       const supabase = createClient();
       const searchParams = new URLSearchParams(window.location.search);
       const code = searchParams.get("code");
-      const next = searchParams.get("next") || "/members";
+      const requestedNext = searchParams.get("next");
+      const next = requestedNext?.startsWith("/") && !requestedNext.startsWith("//") ? requestedNext : "/members";
       let authError: Error | null = null;
 
       if (code) {

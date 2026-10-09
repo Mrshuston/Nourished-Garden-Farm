@@ -1,16 +1,22 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 export function CheckoutButton({ slug, free = false, inquiryOnly = false }: { slug: string; free?: boolean; inquiryOnly?: boolean }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  async function startCheckout() {
+  const startCheckout = useCallback(async function startCheckout() {
     if (free) {
       setLoading(true);
+      setError("");
       const response = await fetch("/api/free-download", { method: "POST" });
       const data = await response.json();
+      if (response.status === 401) {
+        const returnTo = `/programs/${slug}?claim=1`;
+        window.location.assign(`/sign-in?next=${encodeURIComponent(returnTo)}`);
+        return;
+      }
       if (!response.ok) {
         setError(data.error || "The guide could not be prepared.");
         setLoading(false);
@@ -33,7 +39,13 @@ export function CheckoutButton({ slug, free = false, inquiryOnly = false }: { sl
       return;
     }
     window.location.assign(data.url);
-  }
+  }, [free, slug]);
+
+  useEffect(() => {
+    if (free && new URLSearchParams(window.location.search).get("claim") === "1") {
+      void startCheckout();
+    }
+  }, [free, startCheckout]);
 
   if (inquiryOnly) return <a className="button button-primary button-wide" href="https://calendly.com/thenourishedgardens/calm-call" target="_blank" rel="noreferrer">Ask about this program</a>;
 

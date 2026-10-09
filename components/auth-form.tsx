@@ -14,6 +14,8 @@ export function AuthForm({ mode }: { mode: "sign-in" | "sign-up" }) {
   const [error, setError] = useState("");
   const [message, setMessage] = useState("");
   const [busy, setBusy] = useState(false);
+  const requestedNext = searchParams.get("next");
+  const nextPath = requestedNext?.startsWith("/") && !requestedNext.startsWith("//") ? requestedNext : "/members";
 
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -27,7 +29,7 @@ export function AuthForm({ mode }: { mode: "sign-in" | "sign-up" }) {
         password,
         options: {
           data: { full_name: name.trim() },
-          emailRedirectTo: `${window.location.origin}/auth/callback?next=/members`,
+          emailRedirectTo: `${window.location.origin}/auth/callback?next=${encodeURIComponent(nextPath)}`,
         },
       });
       if (signUpError) setError(signUpError.message);
@@ -36,7 +38,7 @@ export function AuthForm({ mode }: { mode: "sign-in" | "sign-up" }) {
       const { error: signInError } = await supabase.auth.signInWithPassword({ email, password });
       if (signInError) setError("That email or password did not work. Please try again or reset your password.");
       else {
-        router.push(searchParams.get("next") || "/members");
+        router.push(nextPath);
         router.refresh();
       }
     }
@@ -58,7 +60,7 @@ export function AuthForm({ mode }: { mode: "sign-in" | "sign-up" }) {
         <button className="button button-primary button-wide" disabled={busy}>{busy ? "Please wait…" : mode === "sign-up" ? "Create account" : "Sign in"}</button>
       </form>
       <div className="auth-links">
-        {mode === "sign-in" ? <><Link href="/forgot-password">Forgot password?</Link><span>New here? <Link href="/sign-up">Create an account</Link></span></> : <span>Already have an account? <Link href="/sign-in">Sign in</Link></span>}
+        {mode === "sign-in" ? <><Link href="/forgot-password">Forgot password?</Link><span>New here? <Link href={`/sign-up?next=${encodeURIComponent(nextPath)}`}>Create an account</Link></span></> : <span>Already have an account? <Link href={`/sign-in?next=${encodeURIComponent(nextPath)}`}>Sign in</Link></span>}
       </div>
     </section>
   );

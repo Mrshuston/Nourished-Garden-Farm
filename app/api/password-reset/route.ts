@@ -63,7 +63,7 @@ export async function POST(request: Request) {
     return NextResponse.json(
       { error: "We could not send the email right now. Please wait a moment and try again." },
       { status: 502 },
-     );
+    );
   }
 
   return NextResponse.json({ message: genericMessage });
