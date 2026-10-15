@@ -23,15 +23,14 @@ export default function HomePage() {
         <p className="eyebrow">A path that grows with you</p><h2>Start where you are. Go deeper when you&apos;re ready.</h2>
         <p className="new-lede">Choose the level of education, accountability, and personal support that fits your season of life.</p>
         <div className="program-ladder">
-          <article className="ladder-step ladder-free"><div><h3>Free guide</h3><p>5 Simple Changes for a Calmer Family Week—a gentle seven-day starting point.</p></div><strong className="ladder-price">Free</strong><Link className="ladder-link" href="/programs/calmer-family-week">Get the guide →</Link></article>
+          <article className="ladder-step ladder-free"><div><p className="eyebrow">1 · Start</p><h3>Free guide</h3><p>5 Simple Changes for a Calmer Family Week—a gentle seven-day starting point.</p></div><strong className="ladder-price">Free</strong><Link className="ladder-link" href="/programs/calmer-family-week">Get the guide →</Link></article>
           <article className="ladder-step ladder-guides">
-            <div><h3>Self-paced programs</h3><p>Practical education you can use on your own schedule, without pressure.</p></div><strong className="ladder-price">$39–$79</strong>
+            <div><p className="eyebrow">2 · Learn</p><h3>Self-paced programs</h3><p>Practical education you can use on your own schedule, without pressure.</p></div><strong className="ladder-price">$39–$97</strong>
             <div className="program-mini-grid">{selfPacedPrograms.map((program) => <Link key={program.slug} href={`/programs/${program.slug}`}><span>{program.title}</span><b>{program.price}</b></Link>)}</div>
-            <p className="launch-note">Rooted &amp; Radiant is $1 through October 20, 2026, then $98.</p>
+            <p className="launch-note">Rooted &amp; Radiant is $1 through October 20, 2026, then $97.</p>
           </article>
-          <article className="ladder-step ladder-group"><div><h3>Group coaching</h3><p>Live calls, a small supportive group, and a plan built for your current season.</p></div><strong className="ladder-price">$597–$697</strong><a className="ladder-link" href="https://calendly.com/thenourishedgardens/calm-call" target="_blank" rel="noreferrer">Ask about the next group →</a></article>
-          <article className="ladder-step ladder-membership"><div><h3>Member Garden</h3><p>Monthly encouragement, recipes, routines, check-ins, and tools that keep you moving forward.</p></div><strong className="ladder-price">$39 <small>per month</small></strong><Link className="ladder-link" href="/members">Visit the Member Garden →</Link></article>
-          <article className="ladder-step ladder-private"><div><h3>Private coaching</h3><p>Personalized one-on-one support built around your family, schedule, and wellness goals.</p></div><strong className="ladder-price">From $2,500</strong><a className="ladder-link" href="https://calendly.com/thenourishedgardens/calm-call" target="_blank" rel="noreferrer">Apply with a free call →</a></article>
+          <article className="ladder-step ladder-group"><div><p className="eyebrow">3 · Grow Together</p><h3>Live group coaching</h3><p>Live calls, a small supportive group, and a plan built for your current season.</p></div><strong className="ladder-price">$597–$797</strong><a className="ladder-link" href="https://calendly.com/thenourishedgardens/calm-call" target="_blank" rel="noreferrer">Ask about the next group →</a></article>
+          <article className="ladder-step ladder-private"><div><p className="eyebrow">4 · Personal Support</p><h3>Private coaching</h3><p>Personalized one-on-one support built around your family, schedule, and wellness goals.</p></div><strong className="ladder-price">$1,497–$2,500</strong><a className="ladder-link" href="https://calendly.com/thenourishedgardens/calm-call" target="_blank" rel="noreferrer">Apply with a free call →</a></article>
         </div>
       </div></section>
 

@@ -9,6 +9,8 @@ export type Program = {
   priceEnv?: string;
   free?: boolean;
   inquiryOnly?: boolean;
+  level: "start" | "learn" | "grow";
+  delivery: string;
   lessons: string[];
 };
 
@@ -22,6 +24,8 @@ export const programs: Program[] = [
     length: "7 days",
     price: "Free",
     free: true,
+    level: "start",
+    delivery: "Free guide",
     lessons: ["One small change each day", "Family calm checklist", "Morning and evening routine prompts"],
   },
   {
@@ -33,6 +37,8 @@ export const programs: Program[] = [
     length: "6 weeks",
     price: "$49",
     priceEnv: "STRIPE_PRICE_CALMER_FAMILY",
+    level: "learn",
+    delivery: "Self-paced",
     lessons: ["Calm-home assessment", "Simple routines", "Meal rhythm", "Weekly family reset"],
   },
   {
@@ -44,6 +50,8 @@ export const programs: Program[] = [
     length: "Self-paced",
     price: "$59",
     priceEnv: "STRIPE_PRICE_CLEAN_EATING",
+    level: "learn",
+    delivery: "Self-paced",
     lessons: ["Pantry refresh", "Label-reading guide", "Meal recipes", "Shopping system"],
   },
   {
@@ -55,17 +63,21 @@ export const programs: Program[] = [
     length: "12 weeks",
     price: "$697",
     inquiryOnly: true,
+    level: "grow",
+    delivery: "Live group coaching",
     lessons: ["Strength-based planning", "Sensory-friendly routines", "Food and sleep foundations", "Parent reset tools"],
   },
   {
     slug: "family-wellness-reset",
-    title: "Calm Home, Connected Family",
+    title: "Family Roots & Rhythms",
     eyebrow: "ADHD family support",
     description: "The complete family coaching experience for calmer rhythms, emotional connection, and sustainable household habits.",
     outcome: "Create a shared family plan for routines, nourishment, emotional regulation, and connection.",
     length: "12 weeks",
-    price: "$147",
-    priceEnv: "STRIPE_PRICE_FAMILY_RESET",
+    price: "$697",
+    inquiryOnly: true,
+    level: "grow",
+    delivery: "Live group coaching",
     lessons: ["Family wellness vision", "Weekly meal rhythm", "Movement and outdoor time", "Home organization"],
   },
   {
@@ -77,6 +89,8 @@ export const programs: Program[] = [
     length: "8 weeks",
     price: "$597",
     inquiryOnly: true,
+    level: "grow",
+    delivery: "Live group coaching",
     lessons: ["Understanding the ADHD brain", "Nervous-system care", "Time and routine support", "Nutrition and energy habits"],
   },
   {
@@ -86,8 +100,10 @@ export const programs: Program[] = [
     description: "A whole-person wellness program for busy moms building strength, energy, and sustainable nourishment habits.",
     outcome: "Create realistic food, movement, and stress-supportive habits that fit a full family schedule.",
     length: "12 weeks",
-    price: "Pricing available",
+    price: "$597",
     inquiryOnly: true,
+    level: "grow",
+    delivery: "Live group coaching",
     lessons: ["Reset and foundations", "Balanced nutrition", "Meal-planning support", "Stress and eating awareness"],
   },
   {
@@ -97,8 +113,10 @@ export const programs: Program[] = [
     description: "Supportive lifestyle coaching for women over 40 focused on nourishment, movement, sleep, and steady habits.",
     outcome: "Build a sustainable wellness rhythm that supports energy, strength, rest, and healthy weight goals.",
     length: "12 weeks",
-    price: "Pricing available",
+    price: "$597",
     inquiryOnly: true,
+    level: "grow",
+    delivery: "Live group coaching",
     lessons: ["Resetting the foundations", "Balanced meals", "Strength and movement", "Sleep and stress support"],
   },
   {
@@ -108,8 +126,10 @@ export const programs: Program[] = [
     description: "A practical wellness program for men over 40 who want more energy, strength, and consistent daily habits.",
     outcome: "Create realistic routines for nourishment, movement, rest, and long-term strength.",
     length: "12 weeks",
-    price: "Pricing available",
+    price: "$597",
     inquiryOnly: true,
+    level: "grow",
+    delivery: "Live group coaching",
     lessons: ["Resetting the basics", "High-protein meal ideas", "Strength-supportive habits", "Rest and stress support"],
   },
   {
@@ -119,8 +139,10 @@ export const programs: Program[] = [
     description: "Lifestyle coaching for adults over 60 managing insulin resistance alongside care from their medical team.",
     outcome: "Build steady habits around balanced meals, gentle movement, energy, and healthy aging.",
     length: "12 weeks",
-    price: "Pricing available",
+    price: "$597",
     inquiryOnly: true,
+    level: "grow",
+    delivery: "Live group coaching",
     lessons: ["Resetting the foundations", "Blood-sugar balance education", "Gentle movement", "Healthy-aging routines"],
   },
   {
@@ -130,8 +152,10 @@ export const programs: Program[] = [
     description: "Gentle lifestyle coaching for stress, overwhelm, and emotional wellness alongside licensed mental-health care when needed.",
     outcome: "Create calming daily practices that support nourishment, sleep, boundaries, and emotional well-being.",
     length: "8 weeks",
-    price: "Pricing available",
+    price: "$597",
     inquiryOnly: true,
+    level: "grow",
+    delivery: "Live group coaching",
     lessons: ["Safety and stabilization", "Nervous-system care", "Sleep and nourishment", "Healthy boundaries"],
   },
   {
@@ -143,6 +167,8 @@ export const programs: Program[] = [
     length: "6 weeks",
     price: "$79",
     priceEnv: "STRIPE_PRICE_GARDEN_WELLNESS",
+    level: "learn",
+    delivery: "Self-paced",
     lessons: ["Choose your growing method", "Hydroponic basics", "Family garden jobs", "Harvest-to-table ideas"],
   },
   {
@@ -154,6 +180,8 @@ export const programs: Program[] = [
     length: "Self-paced",
     price: "$39",
     priceEnv: "STRIPE_PRICE_RED_LIGHT",
+    level: "learn",
+    delivery: "Self-paced",
     lessons: ["How red light is discussed", "Device basics", "Routine tracker", "Safety questions"],
   },
   {
@@ -163,8 +191,10 @@ export const programs: Program[] = [
     description: "A six-week wellness reset combining stress-management habits, nourishing food, sleep, movement, gentle skin care, and a 15-minute red-light routine when that timing matches your device instructions.",
     outcome: "Build a calmer daily rhythm that supports stress management, recovery, and healthier-looking skin without restrictive routines or medical promises.",
     length: "6 weeks",
-    price: "$1 launch offer · $98 after October 20, 2026",
+    price: "$1 launch offer · $97 after October 20, 2026",
     priceEnv: "STRIPE_PRICE_ROOTED_RADIANT_LAUNCH",
+    level: "learn",
+    delivery: "Self-paced",
     lessons: [
       "Week 1: Calm the Chaos",
       "Week 2: Nourish From Within",

@@ -7,7 +7,7 @@ export function ProgramCard({ program }: { program: Program }) {
       <p className="eyebrow">{program.eyebrow}</p>
       <h3>{program.title}</h3>
       <p>{program.description}</p>
-      <div className="program-meta"><span>{program.length}</span><strong>{program.price}</strong></div>
+      <div className="program-meta"><span>{program.length} · {program.delivery}</span><strong>{program.price}</strong></div>
       <Link className="text-link" href={`/programs/${program.slug}`}>View program <span aria-hidden>→</span></Link>
     </article>
   );

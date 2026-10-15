@@ -65,6 +65,16 @@ nav a:hover { color:var(--clay); }
 .outcome-box { margin-top:36px; padding:24px; border-left:5px solid var(--gold); background:#f0eadc; }
 .purchase-card { position:sticky; top:112px; padding:34px; border:1px solid var(--line); border-radius:26px; background:white; box-shadow:0 18px 50px rgba(36,62,36,.11); }
 .purchase-price { font:700 3.2rem Georgia,serif; }.purchase-card ul,.member-card ul { padding:0; list-style:none; margin:24px 0; }.purchase-card li { margin:12px 0; }
+.program-levels { display:grid; gap:64px; }
+.program-level-section { scroll-margin-top:100px; }
+.program-level-heading { display:flex; justify-content:space-between; align-items:end; gap:32px; margin-bottom:24px; padding-bottom:18px; border-bottom:1px solid #cbd2bd; }
+.program-level-heading h2 { margin:.2rem 0 .5rem; }
+.program-level-heading p { max-width:680px; margin:0; }
+.program-level-heading > strong { white-space:nowrap; color:#315b2c; font:700 1.65rem Georgia,serif; }
+.private-support-card { display:flex; justify-content:space-between; align-items:center; gap:32px; padding:32px; border-radius:22px; background:#f5f0e4; border:1px solid #d7ccb7; }
+.private-support-card h3 { margin-top:0; }
+.private-support-card p { margin-bottom:0; max-width:720px; }
+@media (max-width:720px) { .program-level-heading,.private-support-card { align-items:flex-start; flex-direction:column; } }
 .fine-print { font-size:.74rem; color:#73776e; line-height:1.55; }.form-error { color:#9e2f2f; font-size:.82rem; }
 .auth-page { min-height:75vh; display:grid; place-items:center; padding:50px; }
 .auth-card { width:min(500px,100%); padding:clamp(28px,5vw,48px); }
