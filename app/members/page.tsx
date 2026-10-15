@@ -6,6 +6,7 @@ import { programs } from "@/lib/programs";
 import { DailyCheckIn } from "@/components/daily-check-in";
 import { DailyInspiration } from "@/components/daily-inspiration";
 import { HighProteinMeals } from "@/components/high-protein-meals";
+import { isOwnerEmail } from "@/lib/client-garden";
 
 export default async function MembersPage() {
   const { data: { user } } = await (await createClient()).auth.getUser();
@@ -27,6 +28,12 @@ export default async function MembersPage() {
         <CustomerPortalButton />
       </section>
       <DailyInspiration />
+      {isOwnerEmail(user.email) && (
+        <section className="owner-garden-card">
+          <div><p className="eyebrow">Private business tools</p><h2>Nourished Client Garden</h2><p>Plan social posts, track interested families, manage follow-ups and watch your coaching revenue grow.</p></div>
+          <Link className="button button-primary" href="/client-garden">Open client dashboard</Link>
+        </section>
+      )}
       <DailyCheckIn />
       <HighProteinMeals />
       <details className="install-help"><summary>Install The Nourished Garden &amp; Farm on your phone</summary><p><strong>iPhone:</strong> Open this page in Safari, tap Share, then Add to Home Screen.</p><p><strong>Android:</strong> Open this page in Chrome, tap the menu, then Install app or Add to Home screen.</p><p>Sign in with the same email and password you use on the website to see your programs.</p></details>
