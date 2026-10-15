@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { createClient } from "@/lib/supabase/server";
 import { isOwnerEmail } from "@/lib/client-garden";
 import { ClientGardenDashboard } from "@/components/client-garden-dashboard";
+import { MetaConnectionCard } from "@/components/meta-connection-card";
 
 export const metadata: Metadata = { title: "Nourished Client Garden" };
 
@@ -21,6 +22,7 @@ export default async function ClientGardenPage() {
         </div>
         <span aria-hidden="true">🌱</span>
       </section>
+      <MetaConnectionCard />
       <ClientGardenDashboard />
     </main>
   );
