@@ -9,7 +9,7 @@ export type Program = {
   priceEnv?: string;
   free?: boolean;
   inquiryOnly?: boolean;
-  level: "start" | "learn" | "grow";
+  level: "start" | "learn" | "grow" | "personal";
   delivery: string;
   lessons: string[];
 };
@@ -79,6 +79,26 @@ export const programs: Program[] = [
     level: "grow",
     delivery: "Live group coaching",
     lessons: ["Family wellness vision", "Weekly meal rhythm", "Movement and outdoor time", "Home organization"],
+  },
+  {
+    slug: "rooted-regulated-private",
+    title: "Rooted & Regulated Private Coaching",
+    eyebrow: "Neurodivergent family support",
+    description: "A private 12-week coaching experience for neurodivergent adults, parents, and families who want practical routines and home systems built around the way their household is wired.",
+    outcome: "Create a personalized family blueprint for calmer routines, easier transitions, nourishment, sleep, organization, communication, and sustainable follow-through.",
+    length: "12 weeks",
+    price: "$1,497",
+    inquiryOnly: true,
+    level: "personal",
+    delivery: "Private 1:1 coaching",
+    lessons: [
+      "75-minute Family Mapping Session",
+      "Ten private 45-minute coaching calls",
+      "Personalized Rooted Family Blueprint",
+      "Custom routines, visual supports, and home systems",
+      "Weekly email or message check-ins",
+      "30 days of Member Garden access after completion",
+    ],
   },
   {
     slug: "focused-flourishing",

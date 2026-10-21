@@ -30,7 +30,7 @@ export default function HomePage() {
             <p className="launch-note">Rooted &amp; Radiant is $1 through October 20, 2026, then $97.</p>
           </article>
           <article className="ladder-step ladder-group"><div><p className="eyebrow">3 · Grow Together</p><h3>Live group coaching</h3><p>Live calls, a small supportive group, and a plan built for your current season.</p></div><strong className="ladder-price">$597–$797</strong><a className="ladder-link" href="https://calendly.com/thenourishedgardens/calm-call" target="_blank" rel="noreferrer">Ask about the next group →</a></article>
-          <article className="ladder-step ladder-private"><div><p className="eyebrow">4 · Personal Support</p><h3>Private coaching</h3><p>Personalized one-on-one support built around your family, schedule, and wellness goals.</p></div><strong className="ladder-price">$1,497–$2,500</strong><a className="ladder-link" href="https://calendly.com/thenourishedgardens/calm-call" target="_blank" rel="noreferrer">Apply with a free call →</a></article>
+          <article className="ladder-step ladder-private"><div><p className="eyebrow">4 · Personal Support</p><h3>Rooted &amp; Regulated</h3><p>Private 12-week coaching for neurodivergent adults, parents, and families who want practical routines and home systems.</p></div><strong className="ladder-price">$1,497</strong><Link className="ladder-link" href="/programs/rooted-regulated-private">Explore private coaching →</Link></article>
         </div>
       </div></section>
 

@@ -29,6 +29,21 @@ const rootedRadiantDetails = [
   },
 ];
 
+const rootedRegulatedDetails = [
+  { title: "Week 1: Understand Your Family's Wiring", body: "Map strengths, stressors, sensory preferences, capacity, and the recurring moments that create the most friction." },
+  { title: "Week 2: Regulate Before You Organize", body: "Create realistic regulation menus and a parent or adult reset plan to use before problem-solving." },
+  { title: "Week 3: Build One Anchor Routine", body: "Turn the hardest part of the day into a short, visible sequence with fewer decisions and reminders." },
+  { title: "Week 4: Make Transitions Easier", body: "Experiment with previews, timers, visual supports, choices, processing time, and recovery space." },
+  { title: "Week 5: Nourish Without Perfection", body: "Build practical meal rhythms, hydration cues, balanced options, and low-pressure food routines." },
+  { title: "Week 6: Create a Sleep-Friendly Evening", body: "Design a predictable wind-down rhythm that reduces unnecessary stimulation and prepares the household for rest." },
+  { title: "Week 7: Work With Executive Function", body: "Externalize reminders, shrink starting steps, and build supports for planning, time, and follow-through." },
+  { title: "Week 8: Build a Brain-Supportive Home", body: "Create simple landing zones, visible storage, and low-friction systems that are easier to maintain." },
+  { title: "Week 9: Communicate With Less Conflict", body: "Practice direct language, processing time, collaborative problem-solving, boundaries, and repair." },
+  { title: "Week 10: Support Movement and Sensory Needs", body: "Build an individualized menu of indoor, outdoor, movement, and nature-based options." },
+  { title: "Week 11: Protect the Parent's Capacity", body: "Clarify limits, recovery needs, realistic expectations, and the support required to sustain change." },
+  { title: "Week 12: Complete Your Rooted Family Blueprint", body: "Document what works and create a manageable 90-day continuation plan for your household." },
+];
+
 export default async function MemberProgramPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const program = getProgram(slug);
@@ -40,6 +55,7 @@ export default async function MemberProgramPage({ params }: { params: Promise<{ 
   if (!access.includes(slug)) redirect(`/programs/${slug}`);
 
   const isRootedRadiant = slug === "rooted-radiant";
+  const isRootedRegulated = slug === "rooted-regulated-private";
 
   return (
     <main>
@@ -83,7 +99,17 @@ export default async function MemberProgramPage({ params }: { params: Promise<{ 
           </>
         )}
 
-        {!isRootedRadiant && (
+        {isRootedRegulated && (
+          <>
+            <div className="outcome-box"><strong>Your private coaching path</strong><p>Your Family Mapping Session determines whether the Parent Path, Adult Path, or Whole-Family Path best fits your goals. Your routines and tools are personalized throughout the program.</p></div>
+            <div className="lesson-list">
+              {rootedRegulatedDetails.map((lesson, index) => <article key={lesson.title}><span>{String(index + 1).padStart(2, "0")}</span><div><h2>{lesson.title}</h2><p>{lesson.body}</p></div></article>)}
+            </div>
+            <p className="fine-print">Rooted &amp; Regulated provides educational coaching and family habit support. It does not diagnose, treat, or cure ADHD, autism, anxiety, or any medical or mental-health condition, and it does not replace care from qualified professionals. Strategies may or may not help, and individual results vary.</p>
+          </>
+        )}
+
+        {!isRootedRadiant && !isRootedRegulated && (
           <div className="lesson-list">
             {program.lessons.map((lesson, index) => (
               <article key={lesson}>
