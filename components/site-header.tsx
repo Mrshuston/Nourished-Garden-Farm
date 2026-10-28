@@ -29,7 +29,7 @@ export function SiteHeader() {
       <div className="header-actions">
         {!signedIn && <Link className="button button-ghost" href="/sign-in">Sign in</Link>}
         {signedIn && <><Link className="button button-ghost" href="/members">My programs</Link><SignOutButton /></>}
-        <a className="button button-primary" href="https://calendly.com/thenourishedgardens/calm-call" target="_blank" rel="noreferrer">Book a free call</a>
+        <a className="button button-primary wellness-call-button" href="https://calendly.com/thenourishedgardens/calm-call" target="_blank" rel="noreferrer">Book Your Free Family Wellness Call</a>
       </div>
     </header>
   );
