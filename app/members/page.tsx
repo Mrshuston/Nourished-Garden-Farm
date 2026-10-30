@@ -6,6 +6,7 @@ import { programs } from "@/lib/programs";
 import { DailyCheckIn } from "@/components/daily-check-in";
 import { DailyInspiration } from "@/components/daily-inspiration";
 import { HighProteinMeals } from "@/components/high-protein-meals";
+import { ProteinTracker } from "@/components/protein-tracker";
 import { isOwnerEmail } from "@/lib/client-garden";
 
 export default async function MembersPage() {
@@ -35,6 +36,7 @@ export default async function MembersPage() {
         </section>
       )}
       <DailyCheckIn />
+      <ProteinTracker />
       <HighProteinMeals />
       <details className="install-help"><summary>Install The Nourished Garden &amp; Farm on your phone</summary><p><strong>iPhone:</strong> Open this page in Safari, tap Share, then Add to Home Screen.</p><p><strong>Android:</strong> Open this page in Chrome, tap the menu, then Install app or Add to Home screen.</p><p>Sign in with the same email and password you use on the website to see your programs.</p></details>
       <section className="content-section">
