@@ -14,7 +14,7 @@ export function DailyCheckIn() {
       setDone(localStorage.getItem(key) === today());
       setRemind(localStorage.getItem("garden-reminder") === "yes");
       if (localStorage.getItem("garden-reminder") === "yes" && localStorage.getItem(key) !== today() && "Notification" in window && Notification.permission === "granted") {
-        new Notification("A moment for your garden", { body: "How are you feeling today? Open your member garden for a quick check-in.", icon: "/icons/garden.svg" });
+        new Notification("A moment for your garden", { body: "How are you feeling today? Open your member garden for a quick check-in.", icon: "/icons/garden-192.png" });
       }
     } catch { /* Storage or notifications may be unavailable. */ }
     if ("serviceWorker" in navigator) navigator.serviceWorker.register("/sw.js").catch(() => {});

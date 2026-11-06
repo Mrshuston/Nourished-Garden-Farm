@@ -7,7 +7,13 @@ export const metadata: Metadata = {
   description: "Online holistic health coaching that helps individuals and families build healthier habits, calmer routines, and brighter tomorrows.",
   manifest: "/manifest.webmanifest",
   appleWebApp: { capable: true, title: "Nourished Garden", statusBarStyle: "default" },
-  icons: { icon: "/icons/garden.svg", apple: "/icons/garden-192.png" },
+  icons: {
+    icon: [
+      { url: "/icons/favicon-48.png", sizes: "48x48", type: "image/png" },
+      { url: "/icons/garden-192.png", sizes: "192x192", type: "image/png" },
+    ],
+    apple: [{ url: "/icons/garden-192.png", sizes: "192x192", type: "image/png" }],
+  },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

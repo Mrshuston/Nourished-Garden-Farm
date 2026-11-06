@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { createClient } from "@/lib/supabase/client";
 import { SignOutButton } from "@/components/sign-out-button";
@@ -16,8 +17,14 @@ export function SiteHeader() {
   return (
     <header className="site-header">
       <Link className="brand" href="/" aria-label="The Nourished Garden and Farm home">
-        <span className="brand-mark">🌻</span>
-        <span><strong>The Nourished Garden</strong><small>&amp; Farm</small></span>
+        <Image
+          className="brand-logo"
+          src="/images/clothing-logo.png"
+          alt="The Nourished Garden and Farm"
+          width={160}
+          height={133}
+          priority
+        />
       </Link>
       <nav aria-label="Main navigation">
         <Link href="/#about">About</Link>
